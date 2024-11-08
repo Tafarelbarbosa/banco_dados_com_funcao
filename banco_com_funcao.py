@@ -26,6 +26,15 @@ def func_na_tabela():
     data = input('Digite uma data no formato aaaa-mm-dd: ')
     return nome,cargo,data
 
+# LISTAR TODOS OS DADOS DA TABELA
+def listar_dados():
+    cursor.execute("SELECT * FROM funcionarios2")
+    funcionarios = cursor.fetchall()
+    print(funcionarios)
+
+
+
+
 
 # CRIAR UMA TABELA
 conexao = criar_banco('funcionarios2.db')
@@ -34,12 +43,14 @@ conexao = criar_banco('funcionarios2.db')
 cursor = criar_dados_tabela(conexao)
 
 # INSERINDO FUNCIONARIOS NA TABELA
-nome,cargo,data = func_na_tabela()
-cursor.execute("INSERT INTO funcionarios2 (id,nome,cargo,dataContratacao) VALUES (NULL,?,?,?)",(
-    nome,cargo,data))
-conexao.commit()
+# nome,cargo,data = func_na_tabela()
+# cursor.execute("INSERT INTO funcionarios2 (id,nome,cargo,dataContratacao) VALUES (NULL,?,?,?)",(
+#     nome,cargo,data))
+# conexao.commit()
 
-nome,cargo,data = func_na_tabela()
-cursor.execute("INSERT INTO funcionarios2 (id,nome,cargo,dataContratacao) VALUES (NULL,?,?,?)",(
-    nome,cargo,data))
-conexao.commit()
+# nome,cargo,data = func_na_tabela()
+# cursor.execute("INSERT INTO funcionarios2 (id,nome,cargo,dataContratacao) VALUES (NULL,?,?,?)",(
+#     nome,cargo,data))
+# conexao.commit()
+
+listar_dados()
