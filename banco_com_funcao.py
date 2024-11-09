@@ -32,8 +32,13 @@ def listar_dados():
     funcionarios = cursor.fetchall()
     print(funcionarios)
 
-
-
+# Alterar dados de uma tabela
+def update_data():
+    id = input ("Informe o número do id: ")
+    cargo = input("Digite o cargo para alterar: ")
+    up = cursor.execute("UPDATE funcionarios2 SET cargo = ? WHERE id = ?",(cargo,id))
+    conexao.commit()
+    return up
 
 
 # CRIAR UMA TABELA
@@ -53,4 +58,9 @@ cursor = criar_dados_tabela(conexao)
 #     nome,cargo,data))
 # conexao.commit()
 
+# LISTAR TODOS OS DADOS DA TABELA
 listar_dados()
+
+# Alterar dados de uma tabela
+update_data()
+
