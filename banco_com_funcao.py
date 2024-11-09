@@ -40,6 +40,12 @@ def update_data():
     conexao.commit()
     return up
 
+# Excluir dados de uma tabela
+def del_table():
+    id = input ('Digite um id do funcionário que você deseja remover: ')
+    deletar = cursor.execute("DELETE FROM funcionarios2 WHERE id = ?", (id))
+    conexao.commit()
+    return deletar
 
 # CRIAR UMA TABELA
 conexao = criar_banco('funcionarios2.db')
@@ -47,6 +53,15 @@ conexao = criar_banco('funcionarios2.db')
 # CRIAR DADOS DA TABELA
 cursor = criar_dados_tabela(conexao)
 
+# Adicionar novos dados na tabela
+def updatenew_data():
+    nome = input("Digite o nome do funcionário: ")
+    cargo = input("Digite o cargo: ")
+    data = input("Digite a data: ")
+    up_new = cursor.execute("INSERT INTO funcionarios2 (id,nome,cargo,dataContratacao) VALUES (NULL,?,?,?)",
+                (nome,cargo,data))
+    conexao.commit()
+    return up_new
 # INSERINDO FUNCIONARIOS NA TABELA
 # nome,cargo,data = func_na_tabela()
 # cursor.execute("INSERT INTO funcionarios2 (id,nome,cargo,dataContratacao) VALUES (NULL,?,?,?)",(
@@ -62,5 +77,12 @@ cursor = criar_dados_tabela(conexao)
 listar_dados()
 
 # Alterar dados de uma tabela
-update_data()
+# update_data()
 
+# Excluir dados de uma tabela
+# del_table()
+
+# Adicionar novos dados na tabela
+updatenew_data()
+
+conexao.close()
